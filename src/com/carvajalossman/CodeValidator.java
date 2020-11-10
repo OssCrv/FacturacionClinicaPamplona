@@ -1,11 +1,22 @@
 package com.carvajalossman;
 
 public class CodeValidator {
-    private static boolean isValid;
 
-    public static boolean ValidateCode(FacturationCode code){
+    public static boolean isValid(String code){
+        if(code.length() == 6 && isInteger(code)
+        &&(code.substring(0,1).equals("1") || code.substring(0,1).equals("2"))){
+            return true;
+        }
+        return false;
+    }
 
 
-        return isValid;
+    public static boolean isInteger(String numero){
+        try{
+            Integer.parseInt(numero);
+            return true;
+        }catch(NumberFormatException e){
+            return false;
+        }
     }
 }

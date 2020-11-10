@@ -9,9 +9,12 @@ public class Main {
         FacturationCode facturationCode;
         PriceCalculator priceCalculator;
 
-        String code = "193456";
-        //Scanner teclado = new Scanner(System.in);
-        //String codigo = teclado.nextLine();
+        String code = "393446";
+
+        do {
+            Scanner teclado = new Scanner(System.in);
+            code = teclado.nextLine();
+        }while(!CodeValidator.isValid(code));
 
         facturationCode = new FacturationCode(code);
 
@@ -19,13 +22,11 @@ public class Main {
                 facturationCode.getThirdDigit(),
                 facturationCode.getFourthDigit(),
                 facturationCode.getFifthDigit(),
-                facturationCode.getSixthDigit());
+                facturationCode.getSixthDigit()
+        );
 
-        if(facturationCode.getFirstDigit() == "1" || facturationCode.getFirstDigit() == "2" ){
-            Pacient pacient;
-            pacient = new Pacient(facturationCode.getFirstDigit());
-        }
-
+        Pacient pacient;
+        pacient = new Pacient(facturationCode.getFirstDigit());
         System.out.println(facturationCode.getFirstDigit() +
                 facturationCode.getSecondDigit() +
                 facturationCode.getThirdDigit() +
@@ -35,8 +36,12 @@ public class Main {
                 "    " +
                 Service.getService(facturationCode.getSecondDigit())+
                 "    " +
-                Integer.parseInt(Service.getPrice(facturationCode.getSecondDigit()))
+                Integer.parseInt(Service.getPrice(facturationCode.getSecondDigit()))+
+                "    " +priceCalculator.CalculateDiscount(pacient)+"    "+
+                Integer.parseInt(Service.getPrice(facturationCode.getSecondDigit()))*(1-priceCalculator.CalculateDiscount(pacient))
         );
+
+
 
 
 
