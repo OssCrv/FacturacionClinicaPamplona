@@ -10,10 +10,11 @@ public class PriceCalculator {
     private boolean isPair;
 
 
-    public PriceCalculator(String thirdDigit, String fourthDigit, String fifthDigit, String sixthDigit) {
-        this.thirdDigit = thirdDigit;
-        this.fourthDigit = fourthDigit;
-        this.fifthDigit = fifthDigit;
+    public PriceCalculator(FacturationCode code) {
+        this.thirdDigit = code.getThirdDigit();
+        this.fourthDigit = code.getFourthDigit();
+        this.fifthDigit = code.getFifthDigit();
+        this.sixthDigit = code.getSixthDigit();
         int sum;
         sum = Integer.parseInt(thirdDigit) + Integer.parseInt(fourthDigit) + Integer.parseInt(fifthDigit);
 
@@ -37,5 +38,23 @@ public class PriceCalculator {
         return discount;
     }
 
+    public float lateFee(){
+        if(sixthDigit.equals("0")||sixthDigit.equals("9")){
+            return 0;
+        }
+        if(sixthDigit.equals("1")||sixthDigit.equals("8")){
+            return 0.05f;
+        }
+        if(sixthDigit.equals("2")||sixthDigit.equals("7")){
+            return 0.1f;
+        }
+        if(sixthDigit.equals("3")||sixthDigit.equals("6")){
+            return 0.15f;
+        }
+        if(sixthDigit.equals("4")||sixthDigit.equals("5")){
+            return 0.2f;
+        }
+        return 0;
+    }
 
 }

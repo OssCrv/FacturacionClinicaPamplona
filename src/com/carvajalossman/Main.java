@@ -18,12 +18,7 @@ public class Main {
 
         facturationCode = new FacturationCode(code);
 
-        priceCalculator = new PriceCalculator(
-                facturationCode.getThirdDigit(),
-                facturationCode.getFourthDigit(),
-                facturationCode.getFifthDigit(),
-                facturationCode.getSixthDigit()
-        );
+        priceCalculator = new PriceCalculator(facturationCode);
 
         Pacient pacient;
         pacient = new Pacient(facturationCode.getFirstDigit());
@@ -38,14 +33,10 @@ public class Main {
                 "    " +
                 Integer.parseInt(Service.getPrice(facturationCode.getSecondDigit()))+
                 "    " +priceCalculator.CalculateDiscount(pacient)+"    "+
-                Integer.parseInt(Service.getPrice(facturationCode.getSecondDigit()))*(1-priceCalculator.CalculateDiscount(pacient))
+                Integer.parseInt(Service.getPrice(facturationCode.getSecondDigit()))*(1-priceCalculator.CalculateDiscount(pacient))+
+                "    " +priceCalculator.lateFee()+"    "+
+                Integer.parseInt(Service.getPrice(facturationCode.getSecondDigit()))*(1-priceCalculator.CalculateDiscount(pacient))*(1+priceCalculator.lateFee())
         );
-
-
-
-
-
-
 
 
     }
