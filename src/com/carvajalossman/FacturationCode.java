@@ -1,49 +1,43 @@
 package com.carvajalossman;
 
 public class FacturationCode {
-    private String facturationCode;
-    private String firstDigit;
-    private String secondDigit;
-    private String thirdDigit;
-    private String fourthDigit;
-    private String fifthDigit;
-    private String sixthDigit;
+    private final char firstDigit;
+    private final char secondDigit;
+    private final char thirdDigit;
+    private final char fourthDigit;
+    private final char fifthDigit;
+    private final char sixthDigit;
 
     public FacturationCode(String facturationCode) {
-        this.facturationCode = facturationCode;
-        this.firstDigit = facturationCode.substring(0,1);
-        this.secondDigit = facturationCode.substring(1,2);
-        this.thirdDigit = facturationCode.substring(2,3);
-        this.fourthDigit = facturationCode.substring(3,4);
-        this.fifthDigit = facturationCode.substring(4,5);
-        this.sixthDigit = facturationCode.substring(5,6);
+        this.firstDigit = facturationCode.charAt(0);
+        this.secondDigit = facturationCode.charAt(1);
+        this.thirdDigit = facturationCode.charAt(2);
+        this.fourthDigit = facturationCode.charAt(3);
+        this.fifthDigit = facturationCode.charAt(4);
+        this.sixthDigit = facturationCode.charAt(5);
     }
 
-    public String getFacturationCode() {
-        return facturationCode;
-    }
-
-    public String getFirstDigit() {
+    public char getFirstDigit() {
         return firstDigit;
     }
 
-    public String getSecondDigit() {
+    public char getSecondDigit() {
         return secondDigit;
     }
 
-    public String getThirdDigit() {
+    public char getThirdDigit() {
         return thirdDigit;
     }
 
-    public String getFourthDigit() {
+    public char getFourthDigit() {
         return fourthDigit;
     }
 
-    public String getFifthDigit() {
+    public char getFifthDigit() {
         return fifthDigit;
     }
 
-    public String getSixthDigit() {
+    public char getSixthDigit() {
         return sixthDigit;
     }
 }

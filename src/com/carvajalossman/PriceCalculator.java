@@ -2,21 +2,18 @@ package com.carvajalossman;
 
 public class PriceCalculator {
 
-    private String thirdDigit;
-    private String fourthDigit;
-    private String fifthDigit;
-    private String sixthDigit;
+    private final char sixthDigit;
 
-    private boolean isPair;
+    private final boolean isPair;
 
 
     public PriceCalculator(FacturationCode code) {
-        this.thirdDigit = code.getThirdDigit();
-        this.fourthDigit = code.getFourthDigit();
-        this.fifthDigit = code.getFifthDigit();
+        char thirdDigit = code.getThirdDigit();
+        char fourthDigit = code.getFourthDigit();
+        char fifthDigit = code.getFifthDigit();
         this.sixthDigit = code.getSixthDigit();
         int sum;
-        sum = Integer.parseInt(thirdDigit) + Integer.parseInt(fourthDigit) + Integer.parseInt(fifthDigit);
+        sum = (int) thirdDigit + (int) fourthDigit + (int) fifthDigit;
 
         this.isPair = (sum % 2 == 0);
     }
@@ -39,19 +36,19 @@ public class PriceCalculator {
     }
 
     public float lateFee(){
-        if(sixthDigit.equals("0")||sixthDigit.equals("9")){
+        if(sixthDigit == '0' || sixthDigit == '9'){
             return 0;
         }
-        if(sixthDigit.equals("1")||sixthDigit.equals("8")){
+        if(sixthDigit == '1' || sixthDigit == '8'){
             return 0.05f;
         }
-        if(sixthDigit.equals("2")||sixthDigit.equals("7")){
+        if(sixthDigit == '2' || sixthDigit == '7'){
             return 0.1f;
         }
-        if(sixthDigit.equals("3")||sixthDigit.equals("6")){
+        if(sixthDigit == '3' ||sixthDigit == '6'){
             return 0.15f;
         }
-        if(sixthDigit.equals("4")||sixthDigit.equals("5")){
+        if(sixthDigit == '4' || sixthDigit == '5'){
             return 0.2f;
         }
         return 0;

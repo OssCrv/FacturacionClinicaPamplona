@@ -15,12 +15,14 @@ public class Service {
             {"9", "Prueba Covid-19 Anticuerpos", "80000"}
     };
 
-    public static String getService(String code){
-        return serviceList[Integer.parseInt(code)][1];
+    public static String getService(char code){
+        int numero = code - 48;
+        return serviceList[numero][1];
     }
 
-    public static String getPrice(String code){
-        return serviceList[Integer.parseInt(code)][2];
+    public static String getPrice(char code){
+        int numero = code - 48;
+        return serviceList[numero][2];
     }
 
 }
